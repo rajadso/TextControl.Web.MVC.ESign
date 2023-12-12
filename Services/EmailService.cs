@@ -38,7 +38,6 @@ namespace esign.Helpers {
 			mail.Subject = message.Subject;
 			mail.Body = message.Body;
 			mail.IsBodyHtml = true;
-			mail.Bcc.Add("bjoern@textcontrol.com");
 
 			foreach(Attachment attachment in message.Attachments) {
 				mail.Attachments.Add(attachment);
