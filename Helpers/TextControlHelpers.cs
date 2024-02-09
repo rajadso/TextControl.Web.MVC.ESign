@@ -14,7 +14,7 @@ using TXTextControl.ServerVisualisation;
 namespace esign.Helpers {
 	public class TextControlHelpers : IDisposable {
 
-		LoadSettings ls = new LoadSettings() { ApplicationFieldFormat = ApplicationFieldFormat.MSWord };
+		LoadSettings ls = new LoadSettings() { ApplicationFieldFormat = ApplicationFieldFormat.MSWordTXFormFields };
 		TextViewGenerator tx;
 
 		public TextControlHelpers(string document) {
