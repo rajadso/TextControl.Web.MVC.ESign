@@ -32,9 +32,9 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="TXTextControl.TextControl.ASP.SDK" Version="32.0.0" />
-    <PackageReference Include="TXTextControl.Web" Version="32.1.0" />
-    <PackageReference Include="TXTextControl.Web.DocumentViewer" Version="32.1.1" />
+    <PackageReference Include="TXTextControl.TextControl.ASP.SDK" Version="32.0.2" />
+    <PackageReference Include="TXTextControl.Web" Version="32.2.0" />
+    <PackageReference Include="TXTextControl.Web.DocumentViewer" Version="32.2.0" />
    
   </ItemGroup>
 

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using TXTextControl.Web;
 
 namespace esign {
 	public class Startup {
@@ -48,25 +49,16 @@ namespace esign {
 			string baseDir = env.ContentRootPath;
 			AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Path.Combine(baseDir, "App_Data"));
 
-			// serve static linked files (JavaScript and CSS for the editor)
-			app.UseStaticFiles(new StaticFileOptions
-			{
-				FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
-					 System.IO.Path.Combine(System.IO.Path.GetDirectoryName(
-						  System.Reflection.Assembly.GetEntryAssembly().Location),
-						  "TXTextControl.Web")),
-				RequestPath = "/TXTextControl.Web"
-			});
 
 			// enable Web Sockets
 			app.UseWebSockets();
 
 			app.UseMiddleware<OpenedMiddleware>();
 
-			// attach the Text Control WebSocketHandler middleware
-			app.UseMiddleware<TXTextControl.Web.WebSocketMiddleware>();
+            // attach the Text Control WebSocketHandler middleware
+            app.UseTXWebSocketMiddleware();
 
-			app.UseStaticFiles();
+            app.UseStaticFiles();
 			app.UseRouting();
 
 			app.UseAuthentication();
