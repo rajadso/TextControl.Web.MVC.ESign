@@ -16,8 +16,14 @@ namespace dsserverweb.Helpers {
 		}
 
 		public void SendConfirmationEmail(Envelope envelope, string host, string userId) {
-			// send e-mail
-			EmailService emailService = new EmailService(_credentials);
+
+            if (_credentials.Email.Server == "")
+            {
+                return;
+            }
+
+            // send e-mail
+            EmailService emailService = new EmailService(_credentials);
 			
 
 			foreach (Signer signer in envelope.Signers) {
@@ -43,8 +49,14 @@ namespace dsserverweb.Helpers {
 		}
 
 		public void SendReviewOwnerEmail(Contract contract, string host) {
-			// send e-mail
-			EmailService emailService = new EmailService(_credentials);
+
+            if (_credentials.Email.Server == "")
+            {
+                return;
+            }
+
+            // send e-mail
+            EmailService emailService = new EmailService(_credentials);
 			string emailBody = System.IO.File.ReadAllText("App_Data/reviewed.html");
 
 			emailBody = emailBody.Replace("%%%signer_name%%%", contract.Sender);
@@ -58,8 +70,14 @@ namespace dsserverweb.Helpers {
 		}
 
 		public void SendReviewEmail(Contract contract, string host, string userId) {
-			// send e-mail
-			EmailService emailService = new EmailService(_credentials);
+
+            if (_credentials.Email.Server == "")
+            {
+                return;
+            }
+
+            // send e-mail
+            EmailService emailService = new EmailService(_credentials);
 			string emailBody = System.IO.File.ReadAllText("App_Data/confirmation-contract.html");
 
 			byte[] octets = System.Text.Encoding.ASCII.GetBytes(contract.ContractID + ":" + userId);
@@ -77,8 +95,14 @@ namespace dsserverweb.Helpers {
 		}
 
 		public void SendFinalSignedEmail(Envelope envelope, MemoryStream stream, Signer signer) {
-			// send e-mail
-			EmailService emailService = new EmailService(_credentials);
+
+            if (_credentials.Email.Server == "")
+            {
+                return;
+            }
+
+            // send e-mail
+            EmailService emailService = new EmailService(_credentials);
 			string emailBody = System.IO.File.ReadAllText("App_Data/signing-thanks_completed.html");
 
 			emailBody = emailBody.Replace("%%%sender_name%%%", envelope.Sender);
@@ -98,8 +122,14 @@ namespace dsserverweb.Helpers {
 		}
 
 		public void SendSignedEmail(Envelope envelope, Signer signer) {
-			// send e-mail
-			EmailService emailService = new EmailService(_credentials);
+
+            if (_credentials.Email.Server == "")
+            {
+                return;
+            }
+
+            // send e-mail
+            EmailService emailService = new EmailService(_credentials);
 			string emailBody = System.IO.File.ReadAllText("App_Data/signing-thanks.html");
 
 			emailBody = emailBody.Replace("%%%sender_name%%%", envelope.Sender);
@@ -114,8 +144,14 @@ namespace dsserverweb.Helpers {
 		}
 
 		public void SendConfirmationOwnerEmail(Envelope envelope, string host) {
-			// send e-mail
-			EmailService emailService = new EmailService(_credentials);
+
+            if (_credentials.Email.Server == "")
+            {
+                return;
+            }
+
+            // send e-mail
+            EmailService emailService = new EmailService(_credentials);
 			string emailBody = System.IO.File.ReadAllText("App_Data/signed.html");
 
 			emailBody = emailBody.Replace("%%%signer_name%%%", envelope.Signers[0].Email);
