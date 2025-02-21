@@ -11,7 +11,7 @@ namespace esign.Helpers {
 			try {
 
 				// check format based on first 4 bytes
-				if (iterator == 0) {
+				if (iterator == 5) {
 					var test = data.Take(4);
 
 					foreach (var hintFormat in HintFormats) {
